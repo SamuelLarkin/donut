@@ -8,6 +8,7 @@ use std::{
     thread,
     time::Duration,
 };
+//use term_size;
 
 
 fn main() {
@@ -16,17 +17,20 @@ fn main() {
 
     const R1: f32 = 1.;
     const R2: f32 = 2.;
-    const K2: f32 = 5.;
+    const K2: f32 = 8.;
 
-    const SCREEN_WIDTH:  usize = 80;
-    const SCREEN_HEIGHT: usize = 30;
+    const SCREEN_WIDTH:  usize = 100;
+    const SCREEN_HEIGHT: usize = 40;
+    //let (SCREEN_WIDTH, SCREEN_HEIGHT) = term_size::dimensions().unwrap();
 
-    const K1: f32 = SCREEN_WIDTH as f32 * K2 * 3. / (8. * (R1 + R2));
+    //const K1: f32 = SCREEN_WIDTH as f32 * K2 * 3. / (19. * (R1 + R2));
+    const K1: f32 = (SCREEN_WIDTH as f32 * K2  / (R1 + R2)) * 0.19;
 
     let mut A: f32=0.;
     let mut B: f32=0.;
 
     print!("\x1b[2J");
+    //print!("\033[2J");
     loop {
         let cos_a: f32 = A.cos();
         let sin_a: f32 = A.sin();
@@ -90,8 +94,8 @@ fn main() {
             }
         }
 
-        A += 0.00004;
-        B += 0.00002;
+        A += 0.004;
+        B += 0.002;
 
         thread::sleep(Duration::from_millis(40));
     };
