@@ -1,4 +1,4 @@
-// g++ donut.c
+// g++ donut.c && ./a.out
 #include <cstring>
 #include <math.h>       /* sin */
 #include <stdio.h>      /* printf */
@@ -6,7 +6,8 @@
 
 int main() {
    const unsigned int screen_width = 80;
-   const unsigned int screen_height = 22;
+   const unsigned int screen_height = 30;
+
    float A = 0, B = 0;
    float i, j;
    int k;
